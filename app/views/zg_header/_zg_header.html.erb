@@ -4,6 +4,7 @@
     <% ZgHeader::Engine.sites.each do |slug, site| %>
       <li><%= link_to site['title'].html_safe, site['link'] %></li>
     <% end %>
+    <br>
     Дратути
     <% unless user_signed_in? %>
       <%= link_to 'Войти', new_user_session_path %>

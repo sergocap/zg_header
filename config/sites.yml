@@ -10,4 +10,8 @@ abiturient:
   title: 'Абитуриентам'
   link: 'https://abiturient.tusur.ru'
 
+org_test:
+  title: 'Тест организаций'
+  link: 'http://localhost:3010'
+
 
