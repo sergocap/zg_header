@@ -7,11 +7,11 @@
     <br>
     Дратути
     <% unless user_signed_in? %>
-      <%= link_to 'Войти', Settings['profile']['sign_in_url'] %>
-      <%= link_to 'Регистрация', Settings['profile']['sign_up_url'] %>
+      <%= link_to 'Войти', Settings['profile.sign_in_url'] %>
+      <%= link_to 'Регистрация', Settings['profile.sign_up_url'] %>
     <% else %>
-      <%= link_to 'Выйти', Settings['profile']['sign_out_url'], method: :delete %>
-      <%= link_to 'Настройки', Settings['profile']['edit'] %>
+      <%= link_to 'Выйти', Settings['profile.sign_out_url'], method: :delete %>
+      <%= link_to 'Настройки', Settings['profile.edit'] %>
       <div>
         Redis info
         <br>
