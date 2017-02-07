@@ -7,10 +7,10 @@
     <br>
     Дратути
     <% unless user_signed_in? %>
-      <%= link_to 'Войти', new_user_session_path %>
-      <%= link_to 'Регистрация', new_user_registration_path %>
+      <%= link_to 'Войти', Settings['profile.sign_in_url'] %>
+      <%= link_to 'Регистрация', Settings['profile.sign_up_url'] %>
     <% else %>
-      <%= link_to 'Выйти', destroy_user_session_path, method: :delete %>
+      <%= link_to 'Выйти', Settings['profile.sign_out_url'], method: :delete %>
       <div>
         Redis info
         <br>
