@@ -11,6 +11,7 @@
       <%= link_to 'Регистрация', Settings['profile.sign_up_url'] %>
     <% else %>
       <%= link_to 'Выйти', Settings['profile.sign_out_url'], method: :delete %>
+      <%= link_to 'Настройки', Settings['profile.edit'] %>
       <div>
         Redis info
         <br>
