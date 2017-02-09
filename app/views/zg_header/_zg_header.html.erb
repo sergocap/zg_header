@@ -1,22 +1,19 @@
-<div style="background: #ccc">
-  <h1>Здесь есть HEADER</h1>
-  <ul class='dropdown-menu'>
+<div class='zg_header'>
+  <h1>ЗнайГород <%= Settings.app.name %></h1>
+  <ul>
     <% ZgHeader::Engine.sites.each do |slug, site| %>
       <li><%= link_to site['title'].html_safe, site['link'] %></li>
     <% end %>
-    <br>
-    Дратути
+  </ul>
+  <div>
     <% unless user_signed_in? %>
+      <span>Здравствуйте</span>
       <%= link_to 'Войти', Settings.profile.sign_in_url %>
       <%= link_to 'Регистрация', Settings.profile.sign_up_url %>
     <% else %>
+      <span><%= current_user.redis_info['name'] %></span>
       <%= link_to 'Выйти', Settings.profile.sign_out_url, method: :delete %>
       <%= link_to 'Настройки', Settings.profile.edit %>
-      <div>
-        Redis info
-        <br>
-        <%= current_user.redis_info %>
-      </div>
     <% end %>
-  </ul>
+  </div>
 </div>
