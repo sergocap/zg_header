@@ -2,7 +2,8 @@
   <nav class='navbar navbar-default'>
     <div class='container-fluid'>
       <div class='navbar-header'>
-        <%= link_to "ЗнайГород  #{Settings.app.name}", Settings.app.main_page, class: 'navbar-brand' %>
+        <%= link_to "ЗнайГород  #{Settings.app.name}",
+          Settings.app.main_page + @current_city.try(:friendly_id).to_s, class: 'navbar-brand' %>
       </div>
 
       <ul class="nav navbar-nav navbar-right">
