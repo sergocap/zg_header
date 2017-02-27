@@ -17,7 +17,8 @@
         </li>
 
         <% unless user_signed_in? %>
-          <li><%= link_to 'Войти', Settings.profile.sign_in_url %></li>
+          <li><%= link_to 'Войти', Settings.profile.sign_in_url + '?' +
+            { redirect_to: request.original_url }.to_param %></li>
           <li><%= link_to 'Регистрация', Settings.profile.sign_up_url %></li>
         <% else %>
           <li><%= image_tag current_user.redis_info['avatar_url'], size: '50x50' %></li>
@@ -26,7 +27,8 @@
             <ul class="dropdown-menu">
               <li><%= link_to 'Сообщения', Settings.profile.messages %></li>
               <li><%= link_to 'Настройки', Settings.profile.edit %></li>
-              <li><%= link_to 'Выйти', Settings.profile.sign_out_url, method: :delete %></li>
+              <li><%= link_to 'Выйти', Settings.profile.sign_out_url + '?' +
+                { redirect_to: Settings['app']['host'] }.to_param, method: :delete %></li>
             </ul>
           </li>
         <% end %>
