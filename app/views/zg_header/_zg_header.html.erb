@@ -28,7 +28,7 @@
               <li><%= link_to 'Сообщения', Settings.profile.messages %></li>
               <li><%= link_to 'Настройки', Settings.profile.edit %></li>
               <li><%= link_to 'Выйти', Settings.profile.sign_out_url + '?' +
-                { redirect_url: Settings['app']['main_page'] }.to_param, method: :delete %></li>
+                { redirect_url: request.original_url }.to_param, method: :delete %></li>
             </ul>
           </li>
         <% end %>
