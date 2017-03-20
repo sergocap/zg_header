@@ -1,6 +1,15 @@
-zg_organizations:
-  title: 'Организации'
-  link: 'http://localhost:3010'
-zg_afisha:
-  title: 'Афиши'
-  link: 'http://localhost:3020'
+development:
+  zg_organizations:
+    title: 'Организации'
+    link: 'http://localhost:3010'
+  zg_afisha:
+    title: 'Афиши'
+    link: 'http://localhost:3020'
+
+production:
+  zg_organizations:
+    title: 'Организации'
+    link: 'http://organizations.znaigorod.ru'
+  zg_afisha:
+    title: 'Афиши'
+    link: 'http://afisha.znaigorod.ru'

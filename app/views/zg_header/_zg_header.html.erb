@@ -2,13 +2,20 @@
   <nav class='navbar navbar-default'>
     <div class='container-fluid'>
       <div class='navbar-header'>
-        <%= link_to "ЗнайГород  #{Settings.app.name}",
-          Settings.app.main_page + @current_city.try(:friendly_id).to_s, class: 'navbar-brand' %>
+        <%= link_to %(#{Settings['app.main_page']}/#{@current_city.try(:friendly_id)}),
+          class: 'navbar-brand' do %>
+          ЗнайГород
+          <%= Settings['app.name'] %>
+        <% end %>
       </div>
 
-      <ul class="nav navbar-nav navbar-right">
+      <ul class='nav navbar-nav navbar-right'>
         <li class='dropdown'>
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Сайты<span class="caret"></span></a>
+          <a href='#' class='dropdown-toggle' data-toggle='dropdown'
+            role='button' aria-haspopup='true' aria-expanded='false'>
+            Сайты
+            <span class='caret'></span>
+          </a>
           <ul class='dropdown-menu'>
             <% ZgHeader::Engine.sites.each do |slug, site| %>
               <li><%= link_to site['title'].html_safe, site['link'] %></li>
@@ -17,18 +24,23 @@
         </li>
 
         <% unless user_signed_in? %>
-          <li><%= link_to 'Войти', Settings.profile.sign_in_url + '?' +
-            { redirect_url: request.original_url }.to_param %></li>
-          <li><%= link_to 'Регистрация', Settings.profile.sign_up_url %></li>
+          <li><%= link_to 'Войти',
+            %(#{Settings['profile.sign_in_url']}?#{{ redirect_url: request.original_url }.to_param}) %></li>
+          <li><%= link_to 'Регистрация', Settings['profile.sign_up_url'] %></li>
         <% else %>
           <li><%= image_tag current_user.redis_info['avatar_url'], size: '50x50' %></li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.redis_info['name'] %><span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><%= link_to 'Сообщения', Settings.profile.messages %></li>
-              <li><%= link_to 'Настройки', Settings.profile.edit %></li>
-              <li><%= link_to 'Выйти', Settings.profile.sign_out_url + '?' +
-                { redirect_url: request.original_url }.to_param, method: :delete %></li>
+            <a href='#' class='dropdown-toggle' data-toggle='dropdown'
+              role='button' aria-haspopup='true' aria-expanded='false'>
+              <%= current_user.redis_info['name'] %>
+              <span class="caret"></span>
+            </a>
+            <ul class='dropdown-menu'>
+              <li><%= link_to 'Сообщения', Settings['profile.messages'] %></li>
+              <li><%= link_to 'Настройки', Settings['profile.edit'] %></li>
+              <li><%= link_to 'Выйти',
+                %(#{Settings.profile.sign_out_url}?#{{ redirect_url: request.original_url }.to_param}),
+                method: :delete %></li>
             </ul>
           </li>
         <% end %>
@@ -36,4 +48,3 @@
     </div>
   </nav>
 </div>
-
