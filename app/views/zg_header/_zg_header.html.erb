@@ -2,10 +2,11 @@
   <nav class='navbar navbar-default'>
     <div class='container-fluid'>
       <div class='navbar-header'>
-        <%= link_to %(#{Settings['app.main_page']}/#{@current_city.try(:friendly_id)}),
+        <%= link_to '/' + @current_city.try(:slug).to_s,
           class: 'navbar-brand' do %>
           ЗнайГород
           <%= Settings['app.name'] %>
+          <%= @current_city.try(:title) %>
         <% end %>
       </div>
 

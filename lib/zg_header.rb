@@ -1,4 +1,7 @@
 require 'zg_header/version'
+require 'configliere'
+
+Settings.read File.expand_path('../../config/' + Rails.env + '_settings.yml', __FILE__)
 
 module ZgHeader
   class Engine < ::Rails::Engine
